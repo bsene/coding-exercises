@@ -4,7 +4,10 @@
       <nav>
         <ul>
           <li class="nav-item">
-            <img class="logo" src="assets/build-a-bot-logo.png" />
+            <img
+              class="logo"
+              src="assets/build-a-bot-logo.png"
+            >
             Build a bot
           </li>
         </ul>
