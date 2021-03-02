@@ -3,13 +3,19 @@
     <div class="top-row">
       <div class="top part">
         <img
-          :src="availableParts.heads[0].src"
+          :src="availableParts.heads[selectedHeadIndex].src"
           title="head"
         >
-        <button class="prev-selector">
+        <button
+          class="prev-selector"
+          @click="selectPreviousHead()"
+        >
           &#9668;
         </button>
-        <button class="next-selector">
+        <button
+          class="next-selector"
+          @click="selectNextHead()"
+        >
           &#9658;
         </button>
       </div>
@@ -76,7 +82,16 @@ export default {
   data() {
     return {
       availableParts,
+      selectedHeadIndex: 0,
     };
+  },
+  methods: {
+    selectNextHead() {
+      this.selectedHeadIndex += 1;
+    },
+    selectPreviousHead() {
+      this.selectedHeadIndex -= 1;
+    },
   },
 };
 </script>
