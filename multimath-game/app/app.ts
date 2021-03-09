@@ -3,8 +3,10 @@ function startGame(): void {
     const playerName = 'Andy';
     logPlayer(playerName);
 
-    const messageElement = document.getElementById('messages')
-    messageElement!.innerText = 'Welcome to MultiMath ! Starting a new game...'
+    const messageElement: HTMLElement | null = document.getElementById('messages')
+    if(typeof messageElement !== null) {
+        messageElement.innerText = 'Welcome to MultiMath ! Starting a new game...'
+    }
 }
 
 function logPlayer(name) {
