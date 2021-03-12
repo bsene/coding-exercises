@@ -18,9 +18,9 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <div class="col mx-2 my-1">
-          <form id="formGame">
-            <div class="mb-3 row">
+        <div class="col-sm mx-2 my-1">
+          <form id="formGame" action="">
+            <div class="mb-3">
               <label for="playerName" class="form-label">Player name</label>
               <input
                 type="text"
@@ -29,28 +29,45 @@
                 placeholder="Player name"
               />
             </div>
-            <div class="mb-3 row">
-              <label for="formGroupExampleInput2" class="form-label"
-                >Another label</label
+            <div class="mb-3">
+              <label for="factor" class="form-label"
+                >Factor</label
               >
               <input
                 type="text"
                 class="form-control"
-                id="formGroupExampleInput2"
-                placeholder="Another input placeholder"
+                id="factor"
+                value="5"
               />
             </div>
-            <div class="mb-3 row">
+            <div class="mb-3">
+              <label for="problemCount" class="form-label"
+                >Number of problems</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="problemCount"
+                placeholder="Number of problems"
+              />
+            </div>
+            <div class="mb-3 ">
               <button id="startGame" class="btn btn-primary">
                 Start the game
               </button>
+              <button id="calculate-btn" class="btn btn-primary" disabled>
+                Calculate
+              </button>
             </div>
           </form>
+          <div id="game"></div>
           <div id="scores">
             <h2>Scoreboard</h2>
             <h4 id="postedScores">No posted scores yet</h4>
           </div>
         </div>
+        <div class="col"></div>
+        <div class="col"></div>
       </div>
     </div>
     <script
@@ -69,6 +86,6 @@
       integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG"
       crossorigin="anonymous"
     ></script>
-    <script src="js/app.js"></script>
+    <script type="module" src="js/app.js"></script>
   </body>
 </html>

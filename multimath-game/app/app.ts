@@ -1,50 +1,25 @@
-const logMessage = (message: string) => console.log(message);
-const logError = (err: string) => console.error(err);
-function startGame(): void {
-  const playerName: string = getInputValue("playerName") as string;
+import { Game } from "./game.js";
+import { Player } from "./player.js";
+import Utils from "./utils.js";
 
-  logPlayer(playerName);
-  postScore(1000, playerName);
-  postScore(-3, playerName);
-}
+document.addEventListener("DOMContentLoaded", (event) => {
+  let newGame: Game;
+  document.getElementById("startGame")!.addEventListener("click", function () {
+    const player = new Player();
+    player.name = Utils.getInputValue("playerName");
 
-function logPlayer(name = "anonymous"): void {
-  console.log(`New game starting for player: ${name}`);
-}
+    const problemCount: number = Number(Utils.getInputValue("problemCount"));
+    const factor: number = Number(Utils.getInputValue("factor"));
 
-function getInputValue(elementID: string): string {
-  const element: HTMLInputElement =
-    (document.getElementById(elementID) as HTMLInputElement);
-
-  if (element.value === "string") return "";
-
-  return element.value;
-}
-
-function postScore(score: number, playerName: string): void {
-  if (playerName.length === 0) return;
-
-  let logger: (value: string) => void;
-
-  logger = logMessage;
-  if (score < 0) logger = logError;
-
-  const scoreElement: HTMLElement =
-    (document.getElementById("postedScores") as HTMLElement);
-  scoreElement.innerText = `${score} - ${playerName}`;
-
-  logger(`Score: ${score}`);
-}
-
-const startGameElement: HTMLElement | null = document.getElementById(
-  "startGame",
-);
-if (startGameElement instanceof HTMLElement) {
-  startGameElement.addEventListener("click", startGame);
-}
-const formGameElement: HTMLElement | null = document.getElementById("formGame");
-if (formGameElement instanceof HTMLElement) {
-  formGameElement.addEventListener("submit", function (e) {
-    e.preventDefault();
+    newGame = new Game(player, problemCount, factor);
+    newGame.render();
   });
-}
+
+  document.getElementById("calculate-btn")!.addEventListener("click", () => {
+    newGame.calculateScore();
+  });
+
+  document.getElementById("formGame")!.addEventListener("submit", (event) => {
+    event.preventDefault();
+  });
+});
