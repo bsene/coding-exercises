@@ -1,0 +1,13 @@
+const log = console.log;
+log();
+log("Hello and welcome to the course!");
+log("We seem to be using");
+log("a lot of logs here.");
+log("Why don't we rename it");
+log("to make it look better?");
+log("To do that. simply assign he function");
+log("'log' o another variable.");
+log("You can call it whatever ou want.");
+log("I called mine 'line' to reflect the");
+log("way I'm using it.");
+log();
